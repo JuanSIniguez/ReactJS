@@ -10,10 +10,7 @@ export const Item = ({ product }) => {
 			className="px-1 m-3"
 			border="dark"
 		>
-			<Card.Img
-				variant="top"
-				src="https://shop.nobilesports.com/media/catalog/product/cache/184ca22b658d1b35e0e54f99c182dbcc/n/h/nhp_snowkite-ai_1.webp"
-			/>
+			<Card.Img variant="top" src={product.img} />
 			<Card.Body>
 				<Card.Title className="fs-6">{product.nombre}</Card.Title>
 				<Card.Text className="my-2 d-flex flex-wrap ">

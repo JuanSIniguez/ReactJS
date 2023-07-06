@@ -1,33 +1,29 @@
 /* Contador para los productos. Falta darle estilo */
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Container from "react-bootstrap/Container";
 
 export const ItemCount = ({ stock, onAdd, initial }) => {
-	const [cant, setCant] = useState(1);
-	useEffect(() => {
-		console.log(cant);
-	}, [cant]);
+	const [cant, setCant] = useState(initial);
+	useEffect(() => {}, [cant]);
 
-	/* 	onAdd = () => {
-		cant > 1 && cant <=stock ? setCant(cant+1) : <div>No hay suficiente stock</div>
-	}; */
+	onAdd = () => {};
 
 	return (
-		<ButtonGroup className="">
+		<Container border="secondary" className="d-flex justify-content-between ">
 			<Button
 				variant="outline-danger"
 				onClick={() => (cant > 1 ? setCant(cant - 1) : <div>Test</div>)}
 			>
 				-
 			</Button>
-			<span className=" text-center"> {cant} </span>
+			<h3>{cant}</h3>
 			<Button
 				variant="outline-success"
 				onClick={() => (cant < stock ? setCant(cant + 1) : <div>Test</div>)}
 			>
 				+
 			</Button>
-		</ButtonGroup>
+		</Container>
 	);
 };

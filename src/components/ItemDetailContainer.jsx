@@ -15,7 +15,7 @@ export const ItemDetailContainer = () => {
 		});
 
 		promise.then((data) => {
-			setProduct(data.filter((product) => product.sku === sku));
+			setProduct(data.find((product) => product.sku === sku));
 		});
 	}, [sku]);
 
