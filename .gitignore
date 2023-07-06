@@ -10,6 +10,7 @@
 
 # production
 /build
+/NoSubir
 
 # misc
 .DS_Store

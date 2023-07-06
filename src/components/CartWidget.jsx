@@ -1,15 +1,18 @@
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
+import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 
-import shoppingcartpng from "../assets/shoppingcart.png"
-
+import shoppingcartpng from "../assets/shoppingcart.png";
 export const CartWidget = () => (
-    <Button variant="outline-primary" className='d-flex-wrap'>
-    <img src={shoppingcartpng} alt="" width="10rem" height="10rem" className='d-flex-wrap'/>
-     <Badge bg="secondary">9</Badge>
-    </Button>
-    
-    
-     
-
-)
+	<Button className="d-flex-wrap mx-0 px-2">
+		<img
+			src={shoppingcartpng}
+			alt=""
+			width="15rem"
+			height="15rem"
+			className="d-flex-wrap "
+		/>
+		<Badge className="mx-2" bg="secondary">
+			9
+		</Badge>
+	</Button>
+);
