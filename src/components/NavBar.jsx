@@ -19,6 +19,7 @@ export const NavBar = () => {
 						width="150vh"
 						height="30vh"
 						className="d-inline-block align-top"
+						alt="SkateBoard"
 					/>
 				</NavLink>
 
