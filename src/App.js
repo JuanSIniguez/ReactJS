@@ -11,14 +11,17 @@ function App() {
 			<Routes>
 				<Route
 					path="/"
+					rel="noreferrer"
 					element={<ItemListContainer greetings="HolaMund" />}
 				/>
 				<Route
 					path="/category/:id"
+					rel="noreferrer"
 					element={<ItemListContainer greetings="HolaMund" />}
 				/>
 				<Route
 					path="/product/:sku"
+					rel="noreferrer"
 					element={<ItemDetailContainer greetings="HolaMund" />}
 				/>
 			</Routes>
