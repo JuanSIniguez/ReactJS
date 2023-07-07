@@ -16,25 +16,35 @@ export const ItemListContainer = (props) => {
 		const promise = new Promise((resolve, reject) => {
 			resolve(data);
 		});
-
-		promise.then((data) => {
-			if (id) {
-				setProducts(data.filter((product) => product.familia === id));
-			} else {
-				setProducts(data);
-			}
-		});
+		setTimeout(() => {
+			promise.then((data) => {
+				if (id) {
+					setProducts(data.filter((product) => product.familia === id));
+				} else {
+					setProducts(data);
+				}
+			});
+		}, 3000);
 	}, [id]);
 
 	return (
-		<Container className="d-flex flex-wrap mt-4">
-			{products.length === 0 ? (
-				<Spinner animation="border" role="status">
-					<span className="visually-hidden">Loading...</span>
-				</Spinner>
-			) : (
-				<ItemList product={products} />
-			)}
-		</Container>
+		<>
+			<h2 className="h1 text-center my-3 underline">
+				<u>Nuestros Productos</u>
+			</h2>
+			<Container className="d-flex flex-wrap mt-4">
+				{products.length === 0 ? (
+					<Spinner
+						animation="border"
+						role="status"
+						className="align-center"
+					>
+						<span className="visually-hidden">Loading...</span>
+					</Spinner>
+				) : (
+					<ItemList product={products} />
+				)}
+			</Container>
+		</>
 	);
 };
