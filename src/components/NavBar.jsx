@@ -12,24 +12,29 @@ const uniqueF = new Set(familia);
 export const NavBar = () => {
 	return (
 		<Navbar bg="dark" variant="dark" className="sticky-top">
-			<Container fluid className="m-0">
-				<NavLink to="/">
-					<img
-						style={{ height: "8vh" }}
-						src={logo}
-						className="d-inline-block align-to px-5"
-						alt="SkateBoard"
-					/>
-				</NavLink>
-
+			<Container fluid className="m-0 ">
 				<Nav>
-					{[...uniqueF].map((id) => (
-						<NavLink key={id} className="nav-link" to={`/category/${id}`}>
-							{id}
-						</NavLink>
-					))}
+					<NavLink to="/">
+						<img
+							style={{ height: "8vh" }}
+							src={logo}
+							className=/* d-inline-block align-to  */ "px-5"
+							alt="SkateBoard"
+						/>
+					</NavLink>
+					<Nav.Item className="text-center d-flex align-items-center mx-2 text-uppercase">
+						{[...uniqueF].map((id) => (
+							<NavLink
+								key={id}
+								className="nav-link "
+								to={`/category/${id}`}
+							>
+								{id}
+							</NavLink>
+						))}
+					</Nav.Item>
+					<CartWidget />
 				</Nav>
-				<CartWidget />
 			</Container>
 		</Navbar>
 	);
