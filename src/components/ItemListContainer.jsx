@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
-
 import { ItemList } from "./ItemList";
 
 import data from "../data/arts.json";
@@ -29,10 +28,10 @@ export const ItemListContainer = (props) => {
 
 	return (
 		<>
-			<h2 className="h1 text-center my-3 underline">
+			<h2 className="h1 text-center my-4 underline">
 				<u>Nuestros Productos</u>
 			</h2>
-			<Container className="d-flex flex-wrap mt-4">
+			<Container fluid className="mx-5 px-auto">
 				{products.length === 0 ? (
 					<Spinner
 						animation="border"
