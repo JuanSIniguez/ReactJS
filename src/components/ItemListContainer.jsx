@@ -31,7 +31,7 @@ export const ItemListContainer = (props) => {
 			<h2 className="h1 text-center my-4 underline">
 				<u>Nuestros Productos</u>
 			</h2>
-			<Container fluid className="mx-5 px-auto">
+			<Container fluid>
 				{products.length === 0 ? (
 					<Spinner
 						animation="border"

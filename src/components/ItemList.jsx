@@ -3,7 +3,7 @@ import Row from "react-bootstrap/esm/Row";
 
 export const ItemList = ({ product }) => {
 	return (
-		<Row>
+		<Row style={{ width: "100%" }}>
 			{product.map((product) => (
 				<Item key={product.sku} product={product} />
 			))}

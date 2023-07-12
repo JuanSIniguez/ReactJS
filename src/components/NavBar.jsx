@@ -34,29 +34,31 @@ export const NavBar = () => {
 					aria-controls="responsive-navbar-nav"
 					className="bg-transparent"
 				/>
+
+				<Nav.Item>
+					<NavDropdown
+						title="Productos"
+						className="text-white
+						bg-dark m-0 h4"
+						id="collasible-nav-dropdown"
+						aria-controls="responsive-navbar-nav"
+					>
+						{[...uniqueF].map((id) => (
+							<NavLink
+								key={id}
+								className="nav-link m-0 p-0 text-white text-uppercase bg-dark"
+								to={`/category/${id}`}
+							>
+								{id}
+							</NavLink>
+						))}
+					</NavDropdown>
+				</Nav.Item>
 				<Navbar.Collapse
 					id="responsive-navbar-nav"
-					className="bg-transparent d-flex-inline"
+					className="bg-transparent d-flex-inline justify-content-end"
 				>
-					<Nav.Item>
-						<NavDropdown
-							title="Productos"
-							className="text-white
-						bg-dark m-0"
-							id="collasible-nav-dropdown"
-						>
-							{[...uniqueF].map((id) => (
-								<NavLink
-									key={id}
-									className="nav-link m-0 p-0 text-white text-uppercase bg-dark"
-									to={`/category/${id}`}
-								>
-									{id}
-								</NavLink>
-							))}
-						</NavDropdown>
-					</Nav.Item>
-					<Nav.Item className="float-right">
+					<Nav.Item className="d-flex  flex-column">
 						<CartWidget />
 					</Nav.Item>
 				</Navbar.Collapse>
