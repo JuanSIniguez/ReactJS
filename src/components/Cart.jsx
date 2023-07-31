@@ -19,7 +19,7 @@ export const Cart = () => {
 	const [formValues, setFormValues] = useState({
 		name: "",
 		phone: "",
-		email: "",
+		email: 0,
 		address: "",
 		suscription: false,
 	});
@@ -32,22 +32,21 @@ export const Cart = () => {
 	};
 
 	const sendOrder = () => {
+		const { brand, category, description, family, img, stock, ...rest } =
+			productsInCart;
+		console.log(rest);
+
 		const order = {
 			buyer: formValues,
-			items: productsInCart,
+			items: rest,
 		};
-		console.log(order);
-		console.log(formValues);
 		const db = getFirestore();
 		const orderCollection = collection(db, "orders");
 
 		addDoc(orderCollection, order).then((response) => {
 			if (response.id) {
 				alert("Su orden: " + response.id + " ha sido completada!");
-				/* 	clearCart(); */
-				console.log(response);
-			} else {
-				console.log(response);
+				clearCart();
 			}
 		});
 	};
@@ -126,7 +125,7 @@ export const Cart = () => {
 									<Form>
 										<Form.Group
 											className="m-3  align-items-center"
-											controlId="name"
+											controlId="formClient"
 										>
 											<Form.Label className="flex-nowrap m-1 ">
 												Nombre completo
@@ -142,7 +141,7 @@ export const Cart = () => {
 										</Form.Group>
 										<Form.Group
 											className="m-3 align-items-center"
-											controlId="phone"
+											controlId="formClient"
 										>
 											<Form.Label className="m-1">
 												Teléfono
@@ -156,7 +155,10 @@ export const Cart = () => {
 												placeholder="Ingrese su nombre completo"
 											/>
 										</Form.Group>
-										<Form.Group className="m-3" controlId="email">
+										<Form.Group
+											className="m-3"
+											controlId="formClient"
+										>
 											<Form.Label className="m-1">
 												Email address
 											</Form.Label>
@@ -170,7 +172,10 @@ export const Cart = () => {
 											/>
 										</Form.Group>
 
-										<Form.Group className="m-3" controlId="address">
+										<Form.Group
+											className="m-3"
+											controlId="formClient"
+										>
 											<Form.Label className="m-1">
 												Dirección de envío:
 											</Form.Label>
@@ -188,6 +193,7 @@ export const Cart = () => {
 											controlId="suscription"
 										>
 											<Form.Check
+												required
 												onChange={handleChange}
 												value={formValues.suscription}
 												type="checkbox"
@@ -196,14 +202,19 @@ export const Cart = () => {
 												className="m-1"
 											/>
 										</Form.Group>
-										<Button
-											variant="primary"
-											type="submit"
+										<Form.Group
 											className="m-3"
-											onClick={sendOrder}
+											controlId="formClient"
 										>
-											Submit
-										</Button>
+											<Button
+												variant="primary"
+												type="button"
+												className="m-3"
+												onClick={sendOrder}
+											>
+												Submit
+											</Button>
+										</Form.Group>
 									</Form>
 								</th>
 							</tr>
