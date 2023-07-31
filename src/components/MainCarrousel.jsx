@@ -24,7 +24,7 @@ export const MainCarrousel = () => {
 				<img
 					style={imgstyle}
 					className="d-block w-100"
-					src="https://www.dropbox.com/scl/fi/m6oak01gier9he0zy9g97/carrousel-surf.webp?rlkey=11mbis8kegi9p567ienw7nt7w&dl=1"
+					src="https://lh3.google.com/u/0/d/19Vwo0BDSOZlEdUxHQXR2sSccEAmFV-vi=w1399-h979-iv1"
 					alt="First slide"
 				/>
 				<Carousel.Caption>
@@ -36,7 +36,7 @@ export const MainCarrousel = () => {
 				<img
 					style={imgstyle}
 					className="d-block w-100"
-					src="https://www.dropbox.com/scl/fi/hp51bluc1r2rze8r907ol/carrousel-snowboard.jpg?rlkey=a1hj6s7sr2wjpybf444coj5y1&dl=1"
+					src="https://lh3.google.com/u/0/d/19W3r3z3gx-N9tiTXCS6895AyTtX8IWeY=w1399-h979-iv1"
 					alt="Second slide"
 				/>
 
@@ -49,7 +49,7 @@ export const MainCarrousel = () => {
 				<img
 					style={imgstyle}
 					className="d-block w-100"
-					src="https://www.dropbox.com/scl/fi/bsd48f3p72rw89p1dz2b2/carrousel-skate.webp?rlkey=5fyma4ick16qftnsbtqubzqdu&dl=1"
+					src="https://lh3.google.com/u/0/d/19X1cc5eaMABjm7X6ZTWLYQkmAy7hAm0B=w1399-h979-iv1"
 					alt="Third slide"
 				/>
 

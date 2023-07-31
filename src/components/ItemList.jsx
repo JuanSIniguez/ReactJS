@@ -5,7 +5,7 @@ export const ItemList = ({ product }) => {
 	return (
 		<Row style={{ width: "100%" }}>
 			{product.map((product) => (
-				<Item key={product.sku} product={product} />
+				<Item key={product.id} product={product} />
 			))}
 		</Row>
 	);

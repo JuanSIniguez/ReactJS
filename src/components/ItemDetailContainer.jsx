@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import { ItemDetail } from "./ItemDetail";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-import data from "../data/arts.json";
+import Container from "react-bootstrap/Container";
+
+import { ItemDetail } from "./ItemDetail";
 
 export const ItemDetailContainer = () => {
 	const [product, setProduct] = useState([]);
-	const { sku } = useParams();
+	const { id } = useParams();
 
 	useEffect(() => {
-		const promise = new Promise((resolve, reject) => {
-			resolve(data);
-		});
-
-		promise.then((data) => {
-			setProduct(data.find((product) => product.sku === sku));
-		});
-	}, [sku]);
+		const db = getFirestore();
+		const refDoc = doc(db, "products", id);
+		getDoc(refDoc).then((snapshot) =>
+			setProduct({
+				id: snapshot.id,
+				...snapshot.data(),
+			})
+		);
+	}, [id]);
 
 	return (
 		<Container>

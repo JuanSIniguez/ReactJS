@@ -1,29 +1,39 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {
+	getFirestore,
+	collection,
+	getDocs,
+	query,
+	where,
+} from "firebase/firestore";
 
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
-import { ItemList } from "./ItemList";
 
-import data from "../data/arts.json";
+import { ItemList } from "./ItemList";
 
 export const ItemListContainer = (props) => {
 	const [products, setProducts] = useState([]);
 	const { id } = useParams();
 
 	useEffect(() => {
-		const promise = new Promise((resolve, reject) => {
-			resolve(data);
+		const db = getFirestore();
+		const refCollection = id
+			? query(collection(db, "products"), where("family", "==", id))
+			: collection(db, "products");
+
+		getDocs(refCollection).then((snapshot) => {
+			if (snapshot.size === 0) setProducts([]);
+			else {
+				setProducts(
+					snapshot.docs.map((doc) => ({
+						id: doc.id,
+						...doc.data(),
+					}))
+				);
+			}
 		});
-		setTimeout(() => {
-			promise.then((data) => {
-				if (id) {
-					setProducts(data.filter((product) => product.familia === id));
-				} else {
-					setProducts(data);
-				}
-			});
-		}, 3000);
 	}, [id]);
 
 	return (
@@ -33,13 +43,11 @@ export const ItemListContainer = (props) => {
 			</h2>
 			<Container fluid>
 				{products.length === 0 ? (
-					<Spinner
-						animation="border"
-						role="status"
-						className="align-center"
-					>
-						<span className="visually-hidden">Loading...</span>
-					</Spinner>
+					<Container style={{ height: "70vh" }} className="text-center">
+						<Spinner animation="border" role="status">
+							<span className="visually-hidden">Loading...</span>
+						</Spinner>{" "}
+					</Container>
 				) : (
 					<ItemList product={products} />
 				)}

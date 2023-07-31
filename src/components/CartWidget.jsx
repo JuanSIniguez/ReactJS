@@ -1,15 +1,22 @@
+import { useState, useContext } from "react";
+
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { MdAccountCircle } from "react-icons/md";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { BsSearch } from "react-icons/bs";
-import { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
 import Form from "react-bootstrap/Form";
 
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { MdAccountCircle } from "react-icons/md";
+import { BsSearch } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
+
+import { CartContext } from "../context/cartContext";
+
 export const CartWidget = () => {
 	const [open, setOpen] = useState(false);
+	const { totalInCart } = useContext(CartContext);
+	const { totalProductsInCart } = totalInCart();
 
 	return (
 		<ButtonGroup className="d-flex">
@@ -34,8 +41,12 @@ export const CartWidget = () => {
 				<MdAccountCircle className="h4" />
 			</Button>
 			<Button variant="transparent" className="text-white">
-				<AiOutlineShoppingCart className="h4" />
-				<Badge bg="transparent">9</Badge>
+				<NavLink to={`/cart/`}>
+					<AiOutlineShoppingCart className="h4" />
+				</NavLink>
+				{!!totalInCart() && (
+					<Badge bg="transparent">{totalProductsInCart}</Badge>
+				)}
 			</Button>
 		</ButtonGroup>
 	);
